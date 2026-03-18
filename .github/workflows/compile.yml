@@ -19,9 +19,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install pandoc-latex-environment filter
-        run: pip3 install pandoc-latex-environment
-
       - name: Compile markdown files to PDF
         run: |
           mkdir -p compiled
@@ -30,7 +27,7 @@ jobs:
             filename=$(basename "$f" .md)
             yml_file="md/${filename}.yml"
             extra_args=""
-            [ -f "$yml_file" ] && extra_args="$yml_file --filter pandoc-latex-environment"
+            [ -f "$yml_file" ] && extra_args="$yml_file"
             pandoc $extra_args "$f" \
               --template eisvogel \
               --from markdown+implicit_figures \
