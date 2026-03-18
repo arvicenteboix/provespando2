@@ -1,0 +1,80 @@
+---
+# Front matter
+# Metainformació del document
+title: Informe sobre formaciones de CEFIRE
+titlepage: true
+# author:
+lang: es
+# Uncomment and provide the image files to enable background images:
+# page-background: portadas/bg.png
+colorlinks: true
+
+# portada
+titlepage-rule-height: 2
+titlepage-rule-color: "000000"
+titlepage-text-color: "000000"
+# Uncomment and provide the image file to enable a custom title page background:
+# titlepage-background: portadas/portada.png
+
+# configuració de l'índex
+toc-own-page: true
+toc-title: Contenidos
+toc-depth: 2
+
+# capçalera i peu
+header-left: Informe
+header-right:
+footer-left: CEFIRE FP
+footer-right: \thepage/\pageref{LastPage}
+
+# Les figures que apareguen on les definim i centrades
+float-placement-figure: H
+caption-justification: centering
+
+# No volem numerar les linies de codi
+listings-disable-line-numbers: true
+
+table-use-row-colors: true
+
+# Configuracions dels paquets de latex
+header-includes:
+
+  #  imatges i subfigures
+  - \usepackage{graphicx}
+  - \usepackage{subfigure}
+  - \usepackage{lastpage}
+  - \usepackage{booktabs}
+  # Per a fer tables en LATEX
+  - \usepackage[table]{xcolor}
+  - \setlength{\arrayrulewidth}{0.1mm}
+  - \setlength{\tabcolsep}{12pt}
+  - \renewcommand{\arraystretch}{2}
+  - \newcolumntype{s}{>{\columncolor[HTML]{AAACED}} p{3cm}}
+  - \arrayrulecolor[HTML]{d4d5c3}
+
+  # caixes d'avisos
+  - \usepackage{awesomebox}
+
+  # text en columnes
+  - \usepackage{multicol}
+  - \setlength{\columnseprule}{1pt}
+  - \setlength{\columnsep}{1em}
+
+  # pàgines apaïsades
+  - \usepackage{pdflscape}
+
+  # per a permetre pandoc dins de blocs Latex
+  - \newcommand{\hideFromPandoc}[1]{#1}
+  - \hideFromPandoc {
+      \let\Begin\begin
+      \let\End\end
+    }
+
+# definició de les caixes d'avis
+pandoc-latex-environment:
+  noteblock: [note]
+  tipblock: [tip]
+  warningblock: [warning]
+  cautionblock: [caution]
+  importantblock: [important]
+...
