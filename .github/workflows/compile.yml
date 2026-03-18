@@ -19,6 +19,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install pandoc-latex-environment
+        run: |
+          python -m venv .venv
+          source .venv/bin/activate
+          pip install pandoc-latex-environment
+          # aquí ya puedes usar el paquete, por ejemplo:
+          python -c "import pandoc_latex_environment; print('ok')"
+
       - name: Compile markdown files to PDF
         run: |
           mkdir -p compiled
@@ -27,7 +40,7 @@ jobs:
             filename=$(basename "$f" .md)
             yml_file="md/${filename}.yml"
             extra_args=""
-            [ -f "$yml_file" ] && extra_args="$yml_file"
+            [ -f "$yml_file" ] && extra_args="$yml_file --filter pandoc-latex-environment"
             pandoc $extra_args "$f" \
               --template eisvogel \
               --from markdown+implicit_figures \
