@@ -19,46 +19,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install LaTeX packages for Eisvogel
+      - name: Configure tlmgr to use TeX Live 2025 archive
         run: |
           tlmgr option repository https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2025/tlnet-final
-          tlmgr install \
-            adjustbox \
-            awesomebox \
-            babel-german \
-            background \
-            bidi \
-            booktabs \
-            collectbox \
-            csquotes \
-            everypage \
-            filehook \
-            footmisc \
-            footnotebackref \
-            framed \
-            fontawesome5 \
-            fvextra \
-            lastpage \
-            letltxmacro \
-            ly1 \
-            mdframed \
-            multicol \
-            mweights \
-            needspace \
-            pagecolor \
-            pdflscape \
-            sourcecodepro \
-            sourcesanspro \
-            subfigure \
-            titling \
-            ucharcat \
-            ulem \
-            unicode-math \
-            upquote \
-            xecjk \
-            xurl \
-            zref
 
+      - name: Install missing LaTeX packages
+        run: |
+          tlmgr install \
+            lastpage \
+            pdflscape \
+            subfigure
 
       - name: Install pandoc-latex-environment
         run: pip install --break-system-packages pandoc-latex-environment
