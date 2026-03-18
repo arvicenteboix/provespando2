@@ -51,7 +51,8 @@ jobs:
             upquote \
             xecjk \
             xurl \
-            zref
+            zref \
+            lastpage
 
 
       - name: Install pandoc-latex-environment
