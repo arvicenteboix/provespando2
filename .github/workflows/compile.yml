@@ -19,6 +19,39 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install LaTeX packages for Eisvogel
+        run: |
+          tlmgr install \
+            adjustbox \
+            babel-german \
+            background \
+            bidi \
+            collectbox \
+            csquotes \
+            everypage \
+            filehook \
+            footmisc \
+            footnotebackref \
+            framed \
+            fvextra \
+            letltxmacro \
+            ly1 \
+            mdframed \
+            mweights \
+            needspace \
+            pagecolor \
+            sourcecodepro \
+            sourcesanspro \
+            subfigure \
+            titling \
+            ucharcat \
+            ulem \
+            unicode-math \
+            upquote \
+            xecjk \
+            xurl \
+            zref
+
       - name: Install pandoc-latex-environment
         run: pip install --break-system-packages pandoc-latex-environment
 
@@ -48,3 +81,4 @@ jobs:
           git add compiled/
           git diff --staged --quiet || git commit -m "Auto-compile: update PDFs from markdown sources"
           git push
+
