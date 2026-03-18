@@ -21,6 +21,7 @@ jobs:
 
       - name: Install LaTeX packages for Eisvogel
         run: |
+          tlmgr option repository https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2025/tlnet-final
           tlmgr install \
             adjustbox \
             babel-german \
@@ -51,6 +52,7 @@ jobs:
             xecjk \
             xurl \
             zref
+
 
       - name: Install pandoc-latex-environment
         run: pip install --break-system-packages pandoc-latex-environment
