@@ -1,6 +1,6 @@
 # Introducción
 
-Este informe presenta las formaciones realizadas en el CEFIRE de FP orientadas a la digitalización de los centros educativos.
+Este informe presenta las formaciones realizadas en el CEFIRE de FP orientadas a la digitalización de los centros educativos. Prova2
 
 ## Objetivos
 
