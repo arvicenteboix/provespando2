@@ -16,6 +16,9 @@ jobs:
       image: pandoc/extra:latest
 
     steps:
+      - name: Install git
+        run: apk add --no-cache git
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -41,9 +44,11 @@ jobs:
             filename=$(basename "$f" .md)
             yml_file="md/${filename}.yml"
             extra_args=""
-            [ -f "$yml_file" ] && extra_args="$yml_file --filter pandoc-latex-environment"
+            if [ -f "$yml_file" ]; then
+              extra_args="$yml_file --filter pandoc-latex-environment"
+            fi
             pandoc $extra_args "$f" \
-              --template eisvogel \
+              --template /.pandoc/templates/eisvogel.latex \
               --from markdown+implicit_figures \
               --number-sections \
               --toc \
